@@ -20,7 +20,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
         $companies = $this->companyService->getAll($request->all());
-        return $this->sucssessResponse($companies, 'Companies retrieved successfully');
+        return $this->sucssessResponse($companies, 'Companies retrieved successfully') ?? $this->errorResponse('Companies not found');
     }
 
 
