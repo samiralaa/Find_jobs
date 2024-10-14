@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('industry')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
