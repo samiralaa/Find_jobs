@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Api\Category;
 
 use App\Domain\Services\Categories\CategoryService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Catrgory\CreateCategoryRequest;
 use Illuminate\Http\Request;
+use App\Traits\ApiResponseTrait;
 
 class CategoryController extends Controller
 {
+    use ApiResponseTrait;
     protected $categoryService;
 
     public function __construct(CategoryService $categoryService)
@@ -18,7 +21,7 @@ class CategoryController extends Controller
     {
         return $this->categoryService->getAll();
     }
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
         return $this->categoryService->create($request->all());
     }
@@ -34,6 +37,4 @@ class CategoryController extends Controller
     {
         return $this->categoryService->delete($id);
     }
-
-
 }

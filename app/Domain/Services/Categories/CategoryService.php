@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Domain\Services\Categories;
 
 use App\Domain\Repositories\Categories\CategoryRepositoryInterface;
@@ -33,5 +34,4 @@ class CategoryService
     {
         return $this->categoryRepository->delete($id);
     }
-
 }
