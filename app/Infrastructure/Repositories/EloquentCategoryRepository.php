@@ -1,22 +1,29 @@
 <?php
 
 namespace App\Infrastructure\Repositories;
-
+use App\Traits\CrudTrait;
 use App\Models\Category;
 use App\Domain\Repositories\Categories\CategoryRepositoryInterface;
 
 class EloquentCategoryRepository implements CategoryRepositoryInterface
 {
-    
+    use CrudTrait;
+
+    protected $model;
+
+    public function __construct(Category $category)
+    {
+        $this->model = $category;
+       
+    }
     public function all()
     {
-        return Category::all()
-        ->select('id', 'title', 'description');
+        return $this->getBySelect(['id', 'title']);
     }
 
     public function findById($id)
     {
-        return Category::find($id);
+        return $this->model->find($id);
     }
 
     public function create(array $attributes)
