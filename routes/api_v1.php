@@ -1,21 +1,15 @@
 <?php
 
+use App\Http\Controllers\Api\Category\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('get-jobs',function()
-{
-    dd('get-jobs');
+
+Route::prefix('admin')->controller(CategoryController::class)->group(function () {
+    Route::get('/categories', 'index');      // GET /admin/categories
+    Route::post('/categories', 'store');     // POST /admin/categories
+    Route::get('/categories/{id}', 'show');  // GET /admin/categories/{id}
+    Route::put('/categories/{id}', 'update'); // PUT /admin/categories/{id}
+    Route::delete('/categories/{id}', 'destroy'); // DELETE /admin/categories/{id}
 });
-Route::post('add-job',function(Request $request)
-{
-    dd('add-job');
-});
-Route::put('update-job',function(Request $request)
-{
-    dd('update-job');
-});
-Route::delete('delete-job',function(Request $request)
-{
-    dd('delete-job');
-});
+

@@ -7,9 +7,11 @@ use App\Domain\Repositories\Categories\CategoryRepositoryInterface;
 
 class EloquentCategoryRepository implements CategoryRepositoryInterface
 {
+    
     public function all()
     {
-        return Category::all();
+        return Category::all()
+        ->select('id', 'title', 'description');
     }
 
     public function findById($id)
