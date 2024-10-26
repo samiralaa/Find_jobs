@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Infrastructure\Repositories;
+
 use App\Traits\CrudTrait;
 use App\Models\Category;
 use App\Domain\Repositories\Categories\CategoryRepositoryInterface;
@@ -14,7 +15,6 @@ class EloquentCategoryRepository implements CategoryRepositoryInterface
     public function __construct(Category $category)
     {
         $this->model = $category;
-       
     }
     public function all()
     {
